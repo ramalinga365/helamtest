@@ -3,8 +3,8 @@
 replicaCount: 1
 
 image:
-  repository: gcr.io/heptio-images/ks-guestbook-demo
-  tag: ""                 # defaults to .Chart.appVersion (0.2)
+  repository: gcr.io/google-samples/gb-frontend
+  tag: v5
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
