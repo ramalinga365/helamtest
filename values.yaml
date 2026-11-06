@@ -1,0 +1,51 @@
+# Default values for guestbook.
+
+replicaCount: 1
+
+image:
+  repository: gcr.io/heptio-images/ks-guestbook-demo
+  tag: ""                 # defaults to .Chart.appVersion (0.2)
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+
+nameOverride: ""
+fullnameOverride: ""
+
+containerPort: 80
+
+service:
+  type: NodePort          # ClusterIP | NodePort | LoadBalancer
+  port: 80
+  nodePort: 30081         # open at http://<node-ip>:30081
+
+ingress:
+  enabled: false          # requires: microk8s enable ingress
+  className: public
+  host: guestbook.local
+  path: /
+  tls: false
+
+env: {}
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 250m
+    memory: 256Mi
+
+probes:
+  enabled: true
+  path: /
+
+autoscaling:
+  enabled: false          # requires: microk8s enable metrics-server
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 70
+
+nodeSelector: {}
+tolerations: []
+affinity: {}
