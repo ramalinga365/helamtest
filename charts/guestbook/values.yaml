@@ -1,6 +1,6 @@
 # Default values for guestbook.
 
-replicaCount: 1
+replicaCount: 2
 
 image:
   repository: gcr.io/google-samples/gb-frontend
@@ -42,7 +42,7 @@ probes:
 
 autoscaling:
   enabled: false          # requires: microk8s enable metrics-server
-  minReplicas: 1
+  minReplicas: 2
   maxReplicas: 3
   targetCPUUtilizationPercentage: 70
 
