@@ -1,0 +1,8 @@
+{{ include "guestbook.fullname" . }} deployed to namespace {{ .Release.Namespace }}.
+
+{{- if eq .Values.service.type "NodePort" }}
+Open: http://<node-ip>:{{ .Values.service.nodePort }}
+{{- end }}
+{{- if .Values.ingress.enabled }}
+Open: http{{ if .Values.ingress.tls }}s{{ end }}://{{ .Values.ingress.host }}{{ .Values.ingress.path }}
+{{- end }}
