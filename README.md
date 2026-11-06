@@ -63,3 +63,36 @@ sudo snap install helm --classic
 helm lint charts/guestbook
 helm template guestbook charts/guestbook
 ```
+
+## Versioning (Git tags)
+
+Each release is a Git tag (`v1.0.0`, `v1.1.0`, ...). Argo CD deploys the tag set in
+`targetRevision`, so a deployment is pinned to an exact, unchangeable version.
+
+| Tag | Changes |
+|---|---|
+| v1.0.0 | gb-frontend:v5, 3 replicas, NodePort 30081 |
+
+### Release a new version
+
+1. Make your change in `charts/guestbook/values.yaml` (or templates).
+2. Bump `version:` in `charts/guestbook/Chart.yaml` (e.g. `1.1.0`).
+3. Commit, tag and push:
+   ```bash
+   git commit -am "Release v1.1.0: <what changed>"
+   git tag -a v1.1.0 -m "v1.1.0: <what changed>"
+   git push origin main --tags
+   ```
+4. Deploy it: Argo CD UI → app → **APP DETAILS → EDIT** → **Target Revision** = `v1.1.0` → **SAVE** → **SYNC**.
+
+### Roll back
+
+Set **Target Revision** back to the previous tag (e.g. `v1.0.0`) → **SAVE** → **SYNC**.
+
+### Version numbers (SemVer)
+
+- `MAJOR` (2.0.0) – breaking change
+- `MINOR` (1.1.0) – new feature / config change
+- `PATCH` (1.0.1) – small fix
+
+List versions: `git tag -l` or GitHub → **Tags**.

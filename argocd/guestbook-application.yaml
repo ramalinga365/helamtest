@@ -9,7 +9,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/ramalinga365/helamtest.git
-    targetRevision: main
+    targetRevision: v1.0.0   # Git tag to deploy - change to roll forward/back
     path: charts/guestbook
     helm:
       releaseName: guestbook
