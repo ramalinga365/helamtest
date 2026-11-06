@@ -1,9 +1,9 @@
-# guestbook-helm
+# helamtest
 
 Helm chart for the Guestbook demo app, deployed to MicroK8s with Argo CD.
 
 ```
-guestbook-helm/
+helamtest/
 ├── argocd/
 │   └── guestbook-application.yaml   # Argo CD Application
 └── charts/guestbook/
@@ -14,15 +14,15 @@ guestbook-helm/
 
 ## 1. Push to GitHub
 
-Create an empty repo named `guestbook-helm` on GitHub, then:
+Create an empty repo named `helamtest` on GitHub, then:
 
 ```bash
-cd guestbook-helm
+cd helamtest
 git init
 git add .
 git commit -m "Add guestbook Helm chart"
 git branch -M main
-git remote add origin https://github.com/<your-github-user>/guestbook-helm.git
+git remote add origin https://github.com/ramalinga365/helamtest.git
 git push -u origin main
 ```
 

@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/<your-github-user>/guestbook-helm.git   # <-- CHANGE THIS
+    repoURL: https://github.com/ramalinga365/helamtest.git
     targetRevision: main
     path: charts/guestbook
     helm:
